@@ -21,8 +21,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json({ limit: "50mb" }));
 
-app.use(`/${process.env.VERSION}`, generate);
-app.use(`/${process.env.VERSION}`, barcode);
+app.use(`/`, generate);
+app.use(`/`, barcode);
 
 
 https.createServer(credentials, app).listen(process.env.PORT || 3000, () => {
