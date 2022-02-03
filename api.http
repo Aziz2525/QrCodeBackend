@@ -1,0 +1,8 @@
+POST http://apithon.com.tr:9047/v1/barcode
+content-type: application/json
+
+{
+    "veri":"123456",
+    "type":"CODE128",
+    "text":"asdasdasd"
+}
