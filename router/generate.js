@@ -26,7 +26,7 @@ router.post("/generate", (req, res) => {
       },
       function (err, url) {
         if (err) res.json({ success: false, message: err });
-            res.json({ success: true, message: fileName, base64: url });
+            res.json({ success: true, base64: url });
       }
     );
   } else {
