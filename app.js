@@ -13,7 +13,6 @@ const credentials = {
    cert: certificate
 }
 
-const port = process.env.PORT || 5000;
 //routers
 const generate = require("./router/generate");
 const barcode = require("./router/barcode");
@@ -26,7 +25,7 @@ app.use(`/${process.env.VERSION}`, generate);
 app.use(`/${process.env.VERSION}`, barcode);
 
 
-https.createServer(credentials, app).listen(port, () => {
+https.createServer(credentials, app).listen(process.env.PORT || 3000, () => {
     console.log('API listening on HTTPS port ' + port + '.');
  });
  
