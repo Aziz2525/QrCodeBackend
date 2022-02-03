@@ -95,8 +95,7 @@ router.post("/generate/vcard", (req, res) => {
     "END:VCARD\r\n";
   var fileName = Date.now();
 
-  QRCode.toFile(
-    `images/${fileName}.png`,
+  QRCode.toDataURL(
     vcard,
     {
       errorCorrectionLevel: "H",
@@ -113,13 +112,7 @@ router.post("/generate/vcard", (req, res) => {
     },
     function (err, url) {
       if (err) res.json({ success: false, message: err });
-      imageToBase64(`images/${fileName}.png`)
-        .then((response) => {
-          res.json({ success: true, message: fileName, base64: response });
-        })
-        .catch((err) => {
-          res.json({ success: false, message: err });
-        });
+          res.json({ success: true, base64: url });
     }
   );
 });
@@ -165,8 +158,7 @@ router.post("/generate/message", (req, res) => {
   var vcard = `smsto:${phone}:${message}`;
   var fileName = Date.now();
 
-  QRCode.toFile(
-    `images/${fileName}.png`,
+  QRCode.toDataURL(
     vcard,
     {
       errorCorrectionLevel: "H",
@@ -183,13 +175,7 @@ router.post("/generate/message", (req, res) => {
     },
     function (err, url) {
       if (err) res.json({ success: false, message: err });
-      imageToBase64(`images/${fileName}.png`)
-        .then((response) => {
-          res.json({ success: true, message: fileName, base64: response });
-        })
-        .catch((err) => {
-          res.json({ success: false, message: err });
-        });
+          res.json({ success: true, base64: url });
     }
   );
 });
@@ -200,8 +186,7 @@ router.post("/generate/email", (req, res) => {
   var vcard = `MATMSG:TO:${email};SUB:${subject};BODY:${message};;`;
   var fileName = Date.now();
 
-  QRCode.toFile(
-    `images/${fileName}.png`,
+  QRCode.toDataURL(
     vcard,
     {
       errorCorrectionLevel: "H",
@@ -218,13 +203,7 @@ router.post("/generate/email", (req, res) => {
     },
     function (err, url) {
       if (err) res.json({ success: false, message: err });
-      imageToBase64(`images/${fileName}.png`)
-        .then((response) => {
-          res.json({ success: true, message: fileName, base64: response });
-        })
-        .catch((err) => {
-          res.json({ success: false, message: err });
-        });
+          res.json({ success: true, base64: url });
     }
   );
 });
@@ -233,8 +212,7 @@ router.post("/generate/phone", (req, res) => {
   var vcard = `"TEL:"${phone}`;
   var fileName = Date.now();
 
-  QRCode.toFile(
-    `images/${fileName}.png`,
+  QRCode.toDataURL(
     vcard,
     {
       errorCorrectionLevel: "H",
@@ -251,13 +229,7 @@ router.post("/generate/phone", (req, res) => {
     },
     function (err, url) {
       if (err) res.json({ success: false, message: err });
-      imageToBase64(`images/${fileName}.png`)
-        .then((response) => {
-          res.json({ success: true, message: fileName, base64: response });
-        })
-        .catch((err) => {
-          res.json({ success: false, message: err });
-        });
+          res.json({ success: true, base64: url });
     }
   );
 });
@@ -266,8 +238,7 @@ router.post("/generate/link", (req, res) => {
   var vcard = link;
   var fileName = Date.now();
 
-  QRCode.toFile(
-    `images/${fileName}.png`,
+  QRCode.toDataURL(
     vcard,
     {
       errorCorrectionLevel: "H",
@@ -284,13 +255,7 @@ router.post("/generate/link", (req, res) => {
     },
     function (err, url) {
       if (err) res.json({ success: false, message: err });
-      imageToBase64(`images/${fileName}.png`)
-        .then((response) => {
-          res.json({ success: true, message: fileName, base64: response });
-        })
-        .catch((err) => {
-          res.json({ success: false, message: err });
-        });
+          res.json({ success: true, base64: url });
     }
   );
 });
@@ -300,8 +265,7 @@ router.post("/generate/wifi", (req, res) => {
   var vcard = `WIFI:T:${value};S:${network};${value !== 'nopass' ? `P:${password};` : ''}H:${hidden};`;
   var fileName = Date.now();
 
-  QRCode.toFile(
-    `images/${fileName}.png`,
+  QRCode.toDataURL(
     vcard,
     {
       errorCorrectionLevel: "H",
@@ -318,13 +282,7 @@ router.post("/generate/wifi", (req, res) => {
     },
     function (err, url) {
       if (err) res.json({ success: false, message: err });
-      imageToBase64(`images/${fileName}.png`)
-        .then((response) => {
-          res.json({ success: true, message: fileName, base64: response });
-        })
-        .catch((err) => {
-          res.json({ success: false, message: err });
-        });
+          res.json({ success: true, base64: url });
     }
   );
 });
