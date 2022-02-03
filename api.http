@@ -1,4 +1,4 @@
-POST http://apithon.com.tr:9047/v1/barcode
+POST https://qrbackendservice.herokuapp.com//v1/barcode
 content-type: application/json
 
 {
