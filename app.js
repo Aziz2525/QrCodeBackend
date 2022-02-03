@@ -25,7 +25,7 @@ app.use(`/`, generate);
 app.use(`/`, barcode);
 
 
-https.createServer(credentials, app).listen(process.env.PORT || 3000, () => {
+https.createServer(credentials, app).listen(process.env.PORT || 80, () => {
     console.log('API listening on HTTPS port ' + port + '.');
  });
  
