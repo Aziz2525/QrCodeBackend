@@ -13,7 +13,7 @@ const credentials = {
    cert: certificate
 }
 
-const port = process.env.PORT || 9017;
+const port = process.env.PORT || 5000;
 //routers
 const generate = require("./router/generate");
 const barcode = require("./router/barcode");
