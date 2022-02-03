@@ -9,8 +9,7 @@ router.post("/generate", (req, res) => {
   var { margin, scale, small, width, dark, light, text } = req.body;
   var fileName = Date.now();
   if (text) {
-    QRCode.toFile(
-      `images/${fileName}.png`,
+    QRCode.toDataURL(
       text,
       {
         errorCorrectionLevel: "H",
@@ -27,13 +26,7 @@ router.post("/generate", (req, res) => {
       },
       function (err, url) {
         if (err) res.json({ success: false, message: err });
-        imageToBase64(`images/${fileName}.png`)
-          .then((response) => {
-            res.json({ success: true, message: fileName, base64: response });
-          })
-          .catch((err) => {
-            res.json({ success: false, message: err });
-          });
+            res.json({ success: true, message: fileName, base64: url });
       }
     );
   } else {
